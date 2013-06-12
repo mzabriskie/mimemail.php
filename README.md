@@ -1,5 +1,5 @@
-mimemail
-========
+php-mimemail
+============
 
 Mime Mail for PHP
 
