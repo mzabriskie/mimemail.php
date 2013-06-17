@@ -45,9 +45,9 @@ class MimeMailTest extends TestCase {
 		file_put_contents($this->message->getSubject() . '.eml', $this->message);
 	}
 
-	function testMessageContent() {
-        //echo $this->message;
-	}
+//	function testMessageContent() {
+//        echo $this->message;
+//	}
 
 	function testValidEmail() {
 		// These should pass
