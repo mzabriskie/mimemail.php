@@ -1,4 +1,4 @@
-php-mimemail
+mimemail.php
 ============
 
 Mime Mail for PHP
