@@ -36,36 +36,39 @@ require_once('MimeMailMessage.php');
  */
 class MimeMail extends MimeMailConstants {
 
-	/**
-	 * Send email message
-	 *
-     * @param   MimeMailMessage Message to be sent
-	 * @return	void
-     * @throws  MimeMailException if mail was successfully accepted for delivery.
-	 */
-	public static function send (MimeMailMessage $message) {
-		// send the mail
-		$result = @mail($message->formatTo(),
-                        $message->getSubject(),
-						'', // No message parameter is sent, since the message is going to be sent as a header
-                        $message->formatHeaders() . PHP_EOL . $message->formatMessage(),
-                        $message->formatParameters());
+    /**
+     * Create a MimeMailMailer instance configured for using sendmail command to mail message
+     *
+     * @return  MimeMailMailer
+     */
+    public static function createSendMailInstance () {
+        require_once('MimeMailSendMailMailer.php');
+        return new MimeMailSendMailMailer();
+    }
 
-        // check for error
-        if (!$result) {
-            throw new MimeMailException('Unable to send message');
-        }
-	}
+    /**
+     * Create a MimeMailMailer instance configured for using SMTP to mail message
+     *
+     * @param   string $user The username for authenticating with the SMTP server
+     * @param   string $pass The password for authenticating with the SMTP server
+     * @param   string $host The host of the SMTP server
+     * @param   int $port The port of the SMTP server
+     * @return  MimeMailMailer
+     */
+    public static function createSmtpInstance ($user, $pass, $host, $port = 25) {
+        require_once('MimeMailSmtpMailer.php');
+        return new MimeMailSmtpMailer($user, $pass, $host, $port);
+    }
 
     /**
      * Checks input to ensure no headers were injected
      *
-     * @param   string User input
+     * @param   string $input User input
      * @return  bool True if no headers where injected in input, otherwise false
      */
     public static function isUserInputValid ($input) {
         if (!empty($input)) {
-            if (preg_match(self::$INJECTED, $input)) {
+            if (preg_match(self::INJECTED, $input)) {
                 return false;
             }
         }
@@ -75,7 +78,7 @@ class MimeMail extends MimeMailConstants {
     /**
      * Validate input to ensure no headers were injected
      *
-     * @param   string User input
+     * @param   string $input User input
      * @return  void
      * @throws  MimeMailException if the user input contains unsafe input
      */
@@ -89,7 +92,7 @@ class MimeMail extends MimeMailConstants {
 	 * Checks an email address to make sure it's valid
 	 *
 	 * @author  Douglas Lovell (http://www.linuxjournal.com/article/9585)
-	 * @param   string Email address
+	 * @param   string $address Email address
 	 * @return  bool True if email address is valid, otherwise false
 	 */
     public static function isEmailAddressValid ($address) {
@@ -148,7 +151,7 @@ class MimeMail extends MimeMailConstants {
 	 * Validate an email address.
 	 *
 	 * @author  Douglas Lovell (http://www.linuxjournal.com/article/9585)
-	 * @param   string Email address
+	 * @param   string $address Email address
 	 * @return  void
 	 * @throws  MimeMailException if the email address doesn't follow correct format or the domain doesn't exist
 	 */

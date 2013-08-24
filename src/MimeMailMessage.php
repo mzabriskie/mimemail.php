@@ -51,8 +51,8 @@ class MimeMailMessage extends MimeMailBody {
 	/**
 	 * Set the to address array
 	 *
-	 * @param	mixed Array of addresses, or string of single address
-	 * @param	string To recipient's name (only if first parameter is string)
+	 * @param	mixed $address Array of addresses, or string of single address
+	 * @param	string $name To recipient's name (only if first parameter is string)
 	 * @return	void
 	 * @throws  MimeMailException if email address is invalid
 	 */
@@ -72,8 +72,8 @@ class MimeMailMessage extends MimeMailBody {
 	/**
 	 * Add an address to the to array
 	 *
-	 * @param	string Email address
-	 * @param	string To recipient's name (optional)
+	 * @param	string $address Email address
+	 * @param	string $name To recipient's name (optional)
 	 * @return	void
 	 * @throws  MimeMailException if email address is invalid
 	 */
@@ -96,8 +96,8 @@ class MimeMailMessage extends MimeMailBody {
 	/**
 	 * Set the CC address array
 	 *
-	 * @param	mixed Array of addresses, or string of single address
-	 * @param	string CC recipient's name (only if first parameter is string)
+	 * @param	mixed $address Array of addresses, or string of single address
+	 * @param	string $name CC recipient's name (only if first parameter is string)
 	 * @return	void
 	 * @throws  MimeMailException if email address is invalid
 	 */
@@ -117,8 +117,8 @@ class MimeMailMessage extends MimeMailBody {
 	/**
 	 * Add an address to the CC array
 	 *
-	 * @param	string Email address
-	 * @param	string CC recipient's name (optional)
+	 * @param	string $address Email address
+	 * @param	string $name CC recipient's name (optional)
 	 * @return	void
 	 * @throws  MimeMailException if email address is invalid
 	 */
@@ -141,8 +141,8 @@ class MimeMailMessage extends MimeMailBody {
 	/**
 	 * Set the BCC address array
 	 *
-	 * @param	mixed Array of addresses, or string of single address
-	 * @param	string BCC recipient's name (only if first parameter is string)
+	 * @param	mixed $address Array of addresses, or string of single address
+	 * @param	string $name BCC recipient's name (only if first parameter is string)
 	 * @return	void
 	 * @throws  MimeMailException if email address is invalid
 	 */
@@ -162,8 +162,8 @@ class MimeMailMessage extends MimeMailBody {
 	/**
 	 * Add an address to the BCC array
 	 *
-	 * @param	mixed Email address
-	 * @param	string BCC recipient's name (optional)
+	 * @param	mixed $address Email address
+	 * @param	string $name BCC recipient's name (optional)
 	 * @return	void
 	 * @throws  MimeMailException if email address is invalid
 	 */
@@ -186,8 +186,8 @@ class MimeMailMessage extends MimeMailBody {
 	/**
 	 * Set the from address
 	 *
-	 * @param	string Email address
-	 * @param	string From's name (optional)
+	 * @param	string $address Email address
+	 * @param	string $name From's name (optional)
 	 * @return	void
 	 * @throws  MimeMailException if email address is invalid
 	 */
@@ -209,8 +209,8 @@ class MimeMailMessage extends MimeMailBody {
 	/**
 	 * Set the reply to address
 	 *
-	 * @param	string Email address
-	 * @param   string Reply to's name (optional)
+	 * @param	string $address Email address
+	 * @param   string $name Reply to's name (optional)
 	 * @return	void
 	 * @throws  MimeMailException if email address is invalid
 	 */
@@ -232,7 +232,7 @@ class MimeMailMessage extends MimeMailBody {
 	/**
 	 * Set the subject
 	 *
-	 * @param	string Subject
+	 * @param	string $subject Subject
 	 * @return	void
 	 */
 	public function setSubject ($subject) {
@@ -252,7 +252,7 @@ class MimeMailMessage extends MimeMailBody {
 	/**
 	 * Set the HTML message
 	 *
-	 * @param	string 	Value may be either a file path, ie "/tmp/email.html",
+	 * @param	string $html Value may be either a file path, ie "/tmp/email.html",
 	 * 						or a string that will be converted into a file.
 	 * @return	void
 	 */
@@ -266,7 +266,7 @@ class MimeMailMessage extends MimeMailBody {
 	/**
 	 * Set the Text message
 	 *
-     * @param	string 	Value may be either a file path, ie "/tmp/email.txt",
+     * @param	string $text Value may be either a file path, ie "/tmp/email.txt",
 	 * 						or a string that will be converted into a file.
 	 * @return	void
 	 */
@@ -321,11 +321,11 @@ class MimeMailMessage extends MimeMailBody {
 	/**
 	 * Add a file for attachment to the attachment array
 	 *
-	 * @param	string 		Value may be either a file path, ie "/tmp/email_attachment",
+	 * @param	string $file Value may be either a file path, ie "/tmp/email_attachment",
 	 * 									or a string that will be converted into a file.
-	 * @param	string 		Name of the file to be attached
-	 * @param	string		Content type of the file
-	 * @param	string		Disposition of the attachment in the email
+	 * @param	string $fileName Name of the file to be attached
+	 * @param	string $contentType Content type of the file
+	 * @param	string $disposition Disposition of the attachment in the email
 	 * @return	void
 	 */
 	public function addAttachment ($file, $fileName = null, $contentType = MimeMail::TYPE_APPLICATION_OCTET_STREAM, $disposition = MimeMail::DISPOSITION_ATTACHMENT) {
@@ -434,7 +434,7 @@ class MimeMailMessage extends MimeMailBody {
 		}
 
 		// add mailer version
-		$headers[] = 'X-Mailer: ' . __CLASS__ . ' v' . MimeMail::VERSION;
+		$headers[] = 'X-Mailer: MimeMail v' . MimeMail::VERSION;
 
 		// add additional headers
 		foreach ($this->getHeaders() as $header) {

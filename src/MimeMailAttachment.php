@@ -33,11 +33,11 @@ class MimeMailAttachment extends MimeMailPart {
 		$disposition;
 
 	/**
-	 * @param	string 		Value may be either a file path, (e.g., "/tmp/email_attachment"),
+	 * @param	string $content Value may be either a file path, (e.g., "/tmp/email_attachment"),
 	 * 									or a string that will be converted into a file.
-	 * @param	string 		Name of the file to be attached
-	 * @param	string		Content type of the file
-	 * @param	string		Disposition of the attachment in the email
+	 * @param	string $fileName Name of the file to be attached
+	 * @param	string $contentType Content type of the file
+	 * @param	string $disposition Disposition of the attachment in the email
 	 * @return	void
 	 */
 	public function __construct ($content, $fileName = null, $contentType = null, $disposition = null) {

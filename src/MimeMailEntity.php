@@ -62,7 +62,7 @@ abstract class MimeMailEntity {
 	/**
 	 * Formats CR/LF within a string
 	 *
-	 * @param   string The string to format CR/LF on
+	 * @param   string $subject The string to format CR/LF on
 	 * @return  string A string with CR/LF properly formatted
 	 */
 	protected function formatCrLf ($subject) {
@@ -80,8 +80,8 @@ abstract class MimeMailEntity {
 	/**
 	 * Formats an email address.
 	 *
-	 * @param	string Email address
-	 * @param	string Recepient's name (optional)
+	 * @param	string $address Email address
+	 * @param	string $name Recipient's name (optional)
 	 * @return	string Formatted email (e.g., "John Smith <john.smith@example.com>")
 	 * @throws  MimeMailException if email address is invalid
 	 */

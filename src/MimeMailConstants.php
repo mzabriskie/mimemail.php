@@ -25,6 +25,9 @@ THE SOFTWARE.
 */
 
 abstract class MimeMailConstants {
+    const VERSION = '2.2.0';
+    const INJECTED = '/(\n+)|(\r+)|(\t+)|(%0A+)|(%0D+)|(%08+)|(%09+)/i';
+
     const
         CHARSET_WESTERN             = 'ISO-8859-1',
         CHARSET_ARABIC              = 'ISO-8859-6',
@@ -192,8 +195,6 @@ abstract class MimeMailConstants {
         TYPE_VIDEO_X_MSVIDEO                            = 'video/x-msvideo',
         TYPE_VIDEO_X_SGI_MOVIE                          = 'video/x-sgi-movie',
         TYPE_X_WORLD_X_VRML                             = 'x-world/x-vrml';
-
-	const VERSION = '2.2.0';
     
     public static $PRIORITIES = array(
         '1 (Highest)',
@@ -202,6 +203,4 @@ abstract class MimeMailConstants {
         '4 (Low)',
         '5 (Lowest)'
     );
-
-    public static $INJECTED = '/(\n+)|(\r+)|(\t+)|(%0A+)|(%0D+)|(%08+)|(%09+)/i';
 }

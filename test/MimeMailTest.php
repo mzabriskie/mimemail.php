@@ -35,11 +35,13 @@ class MimeMailTest extends TestCase {
 		parent::tearDown();
 	}
 
-//	function testSimpleMail() {
-//
-//		MimeMail::send($this->message);
-//
+//	function testSendMail() {
+//		MimeMail::createSendMailInstance()->send($this->message);
 //	}
+//
+//    function testSmtpMailer() {
+//        MimeMail::createSmtpInstance('', '', 'smtp.gmail.com', 465)->send($this->message);
+//    }
 
 	function testSaveMessage() {
 		file_put_contents($this->message->getSubject() . '.eml', $this->message);
